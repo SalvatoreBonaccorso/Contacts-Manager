@@ -2,7 +2,7 @@ angular.module("contactMsg", ['ngRoute'])
     /*-----------------------------------
     | Routes
     ------------------------------------*/
-    .config(function ($routeProvider,$locationProvider) {
+    .config(function ($routeProvider, $locationProvider) {
         $routeProvider.when('/', {
             controller: 'indexCtrl',
             templateUrl: 'assets/partials/index.html'
@@ -21,10 +21,10 @@ angular.module("contactMsg", ['ngRoute'])
             });
 
         // toggle prefix #! in the Url
-/*         $locationProvider.html5Mode({
-            enabled: true,
-            requireBase: false
-        }); */
+                $locationProvider.html5Mode({
+                    enabled: true,
+                    requireBase: false
+                });
 
     })
 
