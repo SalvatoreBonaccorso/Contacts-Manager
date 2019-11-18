@@ -21,10 +21,10 @@ angular.module("contactMsg", ['ngRoute'])
             });
 
         // toggle prefix #! in the Url
-                $locationProvider.html5Mode({
+/*                 $locationProvider.html5Mode({
                     enabled: true,
                     requireBase: false
-                });
+                }); */
 
     })
 
