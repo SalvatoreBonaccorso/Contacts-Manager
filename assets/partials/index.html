@@ -13,17 +13,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Karan Bromwich</td>
-                <td>karan@example.com</td>
-                <td>01234 56734</td>
-                <td><a href="/#!/contact/0" class="btn btn-default btn-xs">View</a></td>
-            </tr>
-            <tr>
-                <td>Declan Proud</td>
-                <td>declan@example.com</td>
-                <td>01234 567890</td>
-                <td><a href="/#!/contact/1" class="btn btn-default btn-xs">View</a></td>
+            <tr ng-repeat="contact in contacts">
+                <td>{{contact.name}}</td>
+                <td>{{contact.phone}}</td>
+                <td>{{contact.email}}</td>
+                <!-- la direttiva ng-repeat ci permette di accedere all'indice dell'elemento con $index-->
+                <td><a href="/#!/contact/{{$index}}" class="btn btn-default btn-xs">View</a></td>
             </tr>
         </tbody>
     </table>
