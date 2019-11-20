@@ -1,4 +1,4 @@
-angular.module("contactMsg", ['ngRoute'])
+angular.module("contactMsg", ['ngRoute','ngSanitize'])
     /*-----------------------------------
     | Routes
     ------------------------------------*/
@@ -28,34 +28,16 @@ angular.module("contactMsg", ['ngRoute'])
 
     })
 
-    .controller("AppCtrl", function ($scope, jsonFilter) {
-
-        $scope.clickHandler = function () {
-            $scope.isHidden = !$scope.isHidden;
+    .controller("AppCtrl", function ($scope, $location) {
+        /* Questa funzione permette di modificare il percorso corrente nella vista index 
+           e si attiva non appena inizieremo a digitare nella casella di ricerca(direttiva ng-keyup) */
+        $scope.startSearch = function(){
+            $location.path('/');
         };
-
-        $scope.contacts = [
-            {
-                name: 'John Doe',
-                phone: '01234567890',
-                email: 'john@example.com'
-            },
-            {
-                name: 'Karan Bromwich',
-                phone: '09876543210',
-                email: 'karan@email.com'
-            }
-        ];
-
-        $scope.styleDemo = function () {
-            if (!$scope.styler) {
-                return;
-            }
-            return {
-                background: 'red',
-                fontWeight: 'bold'
-            };
-        }
+        /* Questa funzione verifica se il percorso corrente è lo stesso di quello che è stato passato */
+        $scope.pageClass = function (path) {
+            return ( path == $location.path() ) ? 'active' : '';
+        };
 
     })
     /* Creazione di un Service personalizzato */
@@ -92,18 +74,40 @@ angular.module("contactMsg", ['ngRoute'])
     .controller('indexCtrl', function ($scope, contacts) {
 
         $scope.contacts = contacts.get();
-        // il servizio $rootScope permette di condividere i  dati tra le viste
-        
     })
 
     .controller('addCtrl', function ($scope) {
 
     })
-    // inserisco il servizio $routeParams che ci permette di accedere ai
-    // parametri della route come oggetti
-    .controller('contactCtrl', function ($scope, $routeParams) {
-        console.log($routeParams)
+    // inserisco il servizio $routeParams che ci permette di accedere ai parametri della route come oggetti
+    // inserisco anche il servizio personalizzato "contacts"
+    .controller('contactCtrl', function ($scope, $routeParams, contacts) {
+
+        $scope.contact = contacts.find($routeParams.id);
     })
+
+    /* direttiva personalizzata */
+    .directive('gravatar', function () {
+        return {
+            restrict: 'AE',
+            template: '<img ng-src="{{img}}" class="{{class}}">',
+            replace:true,
+            // gli attributi passati alla funzione sono semplici oggetti ai quali possiamo accedere
+            link: function (scope, elem, attrs) {
+                // a attrs.size applico un operatore ternario 
+                // se c'è attrs.size assegnalo alla variabile size se no assegna 64
+                var size = (attrs.size) ? attrs.size : 64;
+                scope.img = 'http://gravatar.com/avatar/'+(attrs.email)+'?s='+size;
+                // abbiamo associato le classi assegnate all'elemento
+                scope.class = attrs.class;
+            }
+        }
+    })
+    .filter("paragraph", function(){
+        return function(input){
+        return (input) ? input.replace(/\n/g, "<br />") : input;
+        };
+        })
 
     .filter('truncate', function () {
         return function (input, limit) {
