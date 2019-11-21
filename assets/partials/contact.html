@@ -3,7 +3,7 @@
 circle"></gravatar>
 
 <div class="page-header row">
-    <h1><img src="http://placehold.it/50x50" class="img-circle">Declan Proud</h1>
+    <h1><img src="http://placehold.it/50x50" class="img-circle">{{contact.name}}</h1>
 </div>
 
 <div class="form-horizontal">
@@ -12,19 +12,19 @@ circle"></gravatar>
             <div class="form-group">
                 <label for="name" class="col-sm-4 control-label">Name</label>
                 <div class="col-sm-8">
-                    <p class="form-control-static">Declan Proud</p>
+                    <p class="form-control-static" editable="contact.name" field-type="name"></p>
                 </div>
             </div>
             <div class="form-group">
                 <label for="phone" class="col-sm-4 control-label">Phone Number</label>
                 <div class="col-sm-8">
-                    <p class="form-control-static">01234 567890</p>
+                    <p class="form-control-static" editable="contact.phone" field-type="phone"></p>
                 </div>
             </div>
             <div class="form-group">
                 <label for="address" class="col-sm-4 control-label">Address</label>
                 <div class="col-sm-8">
-                    <p class="form-control-static" ng-bind-html="contact.address | paragraph"></p>
+                    <p class="form-control-static" editable="contact.address" field-type="address"></p>
                 </div>
             </div>
         </div>
@@ -33,19 +33,19 @@ circle"></gravatar>
             <div class="form-group">
                 <label for="email" class="col-sm-4 control-label">Email Address</label>
                 <div class="col-sm-8">
-                    <p class="form-control-static">declan@example.com</p>
+                    <p class="form-control-static" editable="contact.email" field-type="email"></p>
                 </div>
             </div>
             <div class="form-group">
                 <label for="webSite" class="col-sm-4 control-label">Website</label>
                 <div class="col-sm-8">
-                    <p class="form-control-static">https://declan.com</p>
+                    <p class="form-control-static" editable="contact.website" field-type="website"></p>
                 </div>
             </div>
             <div class="form-group">
                 <label for="notes" class="col-sm-4 control-label">Notes</label>
                 <div class="col-sm-8">
-                    <p class="form-control-static">Here are some notes about this contact</p>
+                    <p class="form-control-static" editable="contact.notes" field-type="notes"></p>
                 </div>
             </div>
         </div>
