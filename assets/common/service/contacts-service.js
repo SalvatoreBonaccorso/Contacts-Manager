@@ -31,6 +31,10 @@ angular.module("contactMsg")
             /* il metodo create aggiunge un nuovo contatto  */
             create: function (contact) {
                 contacts.push(contact);
+            },
+            /* il metodo destroy prende un indice dell'array e lo elimina */
+            destroy: function (index){
+                contacts.splice(index,1);
             }
         };
     })

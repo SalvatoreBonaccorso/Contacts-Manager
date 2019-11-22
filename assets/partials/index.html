@@ -18,7 +18,10 @@
                 <td>{{contact.phone}}</td>
                 <td>{{contact.email}}</td>
                 <!-- la direttiva ng-repeat ci permette di accedere all'indice dell'elemento con $index-->
-                <td><a href="/#!/contact/{{$index}}" class="btn btn-default btn-xs">View</a></td>
+                <td>
+                    <a href="/#!/contact/{{$index}}" class="btn btn-default btn-xs">View</a>
+                    <button class="btn btn-danger btn-xs" ng-click="delete($index)">Delete</button>
+                </td>
             </tr>
         </tbody>
     </table>
