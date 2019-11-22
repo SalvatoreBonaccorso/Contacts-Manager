@@ -1,4 +1,4 @@
-angular.module("contactMsg", ['ngRoute', 'ngSanitize'])
+angular.module("contactMsg", ['ngRoute', 'ngSanitize', 'mgcrea.ngStrap', 'mgcrea.ngStrap'])
     /*-----------------------------------
     | Routes
     ------------------------------------*/
@@ -28,7 +28,7 @@ angular.module("contactMsg", ['ngRoute', 'ngSanitize'])
 
     })
 
-    .controller("AppCtrl", function ($scope, $location) {
+    .controller("AppCtrl", function ($scope, $location, $alert) {
         /* Questa funzione permette di modificare il percorso corrente nella vista index 
            e si attiva non appena inizieremo a digitare nella casella di ricerca(direttiva ng-keyup) */
         $scope.startSearch = function () {
@@ -38,5 +38,15 @@ angular.module("contactMsg", ['ngRoute', 'ngSanitize'])
         $scope.pageClass = function (path) {
             return (path == $location.path()) ? 'active' : '';
         };
+
+        var alert = $alert({
+            title: 'Alert Title!',
+            content: "Here\'s some content.",
+            type: 'danger',
+            container: '#alertContainer',
+            show: false
+        })
+
+        $scope.showAlert = alert.show;
 
     })
