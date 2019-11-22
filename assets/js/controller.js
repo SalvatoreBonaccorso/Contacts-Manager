@@ -140,6 +140,9 @@ angular.module("contactMsg", ['ngRoute', 'ngSanitize'])
                 // funzione per mostrare o nascondere l'editor
                 $scope.toggleEditor = function () {
                     $scope.editor.showing = !$scope.editor.showing;
+                    // se in modalità edit non apporto le modifiche premendo 'cancel' il valore
+                    // si ripristina all'originale 
+                    $scope.editor.value = $scope.value;
                 }
                 
                 $scope.field = ($scope.field) ? $scope.field : 'text';

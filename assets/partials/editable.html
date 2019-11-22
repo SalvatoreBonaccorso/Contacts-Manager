@@ -3,7 +3,7 @@
     <button class="btn btn-default btn-xs" ng-click="toggleEditor()">Edit</button>
 </div>
 <div ng-show="editor.showing">
-    <div ng-if="field = 'textArea'">
+    <div ng-if="field == 'textArea'">
         <textArea ng-model="editor.value" class="form-control"></textArea>
     </div>
     <div ng-if="field != 'textarea'">
