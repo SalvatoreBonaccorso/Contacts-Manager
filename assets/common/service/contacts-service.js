@@ -17,6 +17,14 @@ angular.module("contactMsg")
             email: 'declan@declan.com',
             website: 'declanproud.me',
             notes: 'Some notes about the contact.'
+        },
+        {
+            name: 'Karan Bromwich',
+            phone: '2345678',
+            address: '234, Fake Ave\nBristol\nBS1 2AB',
+            email: 'karan@comain.com',
+            website: 'karan.com',
+            notes: ''
         }];
 
         return {
