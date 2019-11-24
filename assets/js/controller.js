@@ -1,4 +1,4 @@
-angular.module("contactMsg", ['ngRoute', 'ngSanitize', 'mgcrea.ngStrap', 'mgcrea.ngStrap'])
+angular.module("contactMsg", ['ngRoute', 'ngSanitize', 'mgcrea.ngStrap'])
     /*-----------------------------------
     | Routes
     ------------------------------------*/
@@ -38,15 +38,5 @@ angular.module("contactMsg", ['ngRoute', 'ngSanitize', 'mgcrea.ngStrap', 'mgcrea
         $scope.pageClass = function (path) {
             return (path == $location.path()) ? 'active' : '';
         };
-
-        var alert = $alert({
-            title: 'Alert Title!',
-            content: "Here\'s some content.",
-            type: 'danger',
-            container: '#alertContainer',
-            show: false
-        })
-
-        $scope.showAlert = alert.show;
 
     })
