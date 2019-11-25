@@ -15,8 +15,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="contact in contacts | filter:search">
-                <td>{{contact.name}}</td>
+            <!--'track by' $index si usa in ng-repeat e serve per specificare chiavi univoche evitando 
+                chiavi duplicate con lo stesso valore -->
+            <tr ng-repeat="contact in contacts | filter:search track by $index ">
+                <td>{{contact.name}} {{$index}}</td>
                 <td>{{contact.phone}}</td>
                 <td>{{contact.email}}</td>
                 <!-- la direttiva ng-repeat ci permette di accedere all'indice dell'elemento con $index-->
